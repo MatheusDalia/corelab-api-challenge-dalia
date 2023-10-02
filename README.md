@@ -1,73 +1,108 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Desafio Corelab:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Os repositórios
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+O [repositório frontend](https://github.com/MatheusDalia/corelab-web-challenge-dalia)
 
-## Description
+O [repositório de backend](https://github.com/MatheusDalia/corelab-api-challenge-dalia)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Como rodar o Backend
 
-## Installation
+Lembre-se de rodar o front em outro terminal.
 
-```bash
-$ npm install
-```
+### Prerequisites
 
-## Running the app
+- Docker
 
-```bash
-# development
-$ npm run start
+  You can install Docker from [here](https://docs.docker.com/get-docker/)
 
-# watch mode
-$ npm run start:dev
+  You also need to install Docker Compose from [here](https://docs.docker.com/compose/install/)
 
-# production mode
-$ npm run start:prod
-```
+  > If you not want to use Docker, you can install PostgreSQL for your OS and change the database connection in the `.env` file
 
-## Test
+- Node
 
-```bash
-# unit tests
-$ npm run test
+  You can install Node from [here](https://nodejs.org/en/download/)
 
-# e2e tests
-$ npm run test:e2e
+### Installation
 
-# test coverage
-$ npm run test:cov
-```
+1. Clone the repo or download the zip file
 
-## Support
+   ```sh
+   git clone https://github.com/MatheusDalia/corelab-api-challenge-dalia
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2. Enter the project folder
 
-## Stay in touch
+   ```sh
+   cd corelab-api-challenge-dalia
+   ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+3. Install NPM packages
 
-## License
+   ```sh
+   npm install
+   ```
 
-Nest is [MIT licensed](LICENSE).
+4. Create a `.env` file based on `.env.example` file
+
+   ```sh
+   cp .env.example .env
+   ```
+
+5. Compose the Docker containers
+
+   ```sh
+   docker-compose up -d
+   ```
+
+6. Run the migrations
+
+   ```sh
+   npx prisma migrate deploy
+   ```
+
+7. Run the project
+
+   ```sh
+     docker-compose up
+   ```
+
+   Open [http://localhost:3333/docs](http://localhost:3333/docs) with your browser to see the docs.
+
+### O aplicativo tem as seguintes funcionalidades:
+
+1. Os usuários são capazes de criar, ler, atualizar e excluir Notas.
+2. Os usuários conseguem marcar um item como favorito.
+3. Os usuários conseguem definir uma cor para cada item de tarefa.
+4. O front-end do React deve exibir a lista de tarefas do usuário de maneira responsiva e visualmente atraente, com a capacidade de filtrar por itens e cores favoritos.
+5. Os itens favoritos devem ser exibidos no topo da lista.
+6. Os usuário conseguem pesquisar as Notas pelo título na barra de busca.
+
+### Requerimentos técnicos:
+
+1. A API de back-end foi construída na estrutura Node.js, utilizando Nest.js, Prisma, Docker e um banco de dados PostgreSQL.
+2. O front-end foi construído em React.
+
+### Entregáveis:
+
+1. Um link para um repositório GitHub contendo o código-fonte completo do projeto.
+2. Uma descrição por escrito de como configurar e executar o aplicativo localmente.
+
+### Backend
+
+Repositório:
+
+1. Node: ^16.15.0
+2. NPM: ^8.5.5
+3. Framework: Nest.js
+4. Banco de dados: PostgreSQL
+
+### Frontend
+
+Repositório:
+
+1. Node: ^16.15.0
+2. NPM: ^8.5.5
+3. Framework: React TS
+4. Sass ou outro pré-processador
