@@ -56,13 +56,7 @@ Lembre-se de rodar o front em outro terminal.
    docker-compose up -d
    ```
 
-6. Run the migrations
-
-   ```sh
-   npx prisma migrate deploy
-   ```
-
-7. Run the project
+6. Run the project
 
    ```sh
      docker-compose up
