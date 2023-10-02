@@ -1,0 +1,44 @@
+# Docker Compose file for running an application stack with Nest.js, MySQL, and Redis
+version: '3.9'
+
+services:
+  # Nest.js application service
+  app:
+    image: node:16.15 # Use Node.js 16.15 image
+    working_dir: /app # Set the working directory inside the container
+    container_name: nestjs # Name of the container
+    volumes:
+      - .:/app # Mount the current directory on the host to /app in the container
+    ports:
+      - 3333:3333 # Map the host port 3333 to the container port 3333
+    command: >
+      /bin/sh -c "npm install &&
+                 npx prisma generate &&
+                 npm run start:dev"
+    depends_on:
+      - db # Ensure the db service is started before the app service
+    networks:
+      - db # Connect the app service to the db network
+
+  # PostgreSQL database service
+  db:
+    image: postgres # Use the PostgreSQL image
+    container_name: postgres # Name of the container
+    restart: 'on-failure' # Restart policy
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # PostgreSQL root password
+      POSTGRES_DB: ${POSTGRES_DB} # PostgreSQL database name
+    ports:
+      - 5432:5432 # Map the host port 5432 to the container port 5432
+    networks:
+      - db # Connect the db service to the db network
+
+# Networks used in the services
+networks:
+  db:
+    driver: bridge # Use the bridge network driver for the db network
+
+# Volumes used in the services
+volumes:
+  cache:
+    driver: local # Use the local volume driver for the cache volume
