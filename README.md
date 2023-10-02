@@ -56,12 +56,23 @@ Lembre-se de rodar o front em outro terminal.
    docker-compose up -d
    ```
 
-6. Run the migrations
+6. Open the Nest.js container
 
    ```sh
-   npx prisma migrate deploy
+   docker exec -it nestjs bash
    ```
 
+7. Inside the Nest.js container, run the migrations:
+
+   ```sh
+   npx prisma migrate dev --name init
+   ```
+   ```sh
+   npx prisma migrate deploy
+    ```
+   ```sh
+   npx prisma generate
+    ```
 7. Run the project
 
    ```sh
